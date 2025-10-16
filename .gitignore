@@ -1,0 +1,31 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.swp
+
+# Virtual environments
+.venv/
+venv/
+
+# uv
+.pyproject-local/*
+.uv/
+uv.lock
+
+# Streamlit
+.streamlit/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Data artifacts (keep your source CSV/Geo files tracked)
+*.parquet
+*.feather
+*.geojson
+*.gpkg-journal
+

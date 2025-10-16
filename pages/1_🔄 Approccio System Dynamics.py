@@ -126,7 +126,7 @@ def upload_data_and_plot4(file_name):
 
 @st.cache_data
 def upload_data_gdf(file_name):
-    gdf_PV = gpd.read_file(results_path + file_name, layer='ElectricityProductionPlant')
+    gdf_PV = gpd.read_file(results_path + file_name, layer='ElectricityProductionPlant', engine='pyogrio')
     gdf_PV = gdf_PV.to_crs(epsg=4326)
     gdf_PV = gdf_PV.loc[gdf_PV['Canton'] == 'TI']
     gdf_PV = gdf_PV.loc[gdf_PV['MainCategory'] == 'maincat_2']
@@ -227,7 +227,7 @@ with tab1:
         """
     )
 
-    st.image(results_path + "/images/Image_1.PNG", caption="Risultati dell'analisi svolta durante il primo workshop. Il numero"
+    st.image(results_path + "/images/Image_1.png", caption="Risultati dell'analisi svolta durante il primo workshop. Il numero"
                                                     " all'interno dei cerchi rappresenta il numero di menzioni del "
                                                     "relativo elemento.")
 
@@ -261,7 +261,7 @@ with tab2:
         """
     )
 
-    st.image(results_path + "/images/Image_2.PNG", caption="Esempio di CLD per la diffusione di veicoli elettrici.")
+    st.image(results_path + "/images/Image_2.png", caption="Esempio di CLD per la diffusione di veicoli elettrici.")
 
 with tab3:
 

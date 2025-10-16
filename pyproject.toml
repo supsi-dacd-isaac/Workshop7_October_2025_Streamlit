@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "workshop7-october-2025-streamlit"
+version = "0.1.0"
+description = "Streamlit app for Canton Ticino energy System Dynamics demos"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Workshop Team" }]
+license = { text = "MIT" }
+
+dependencies = [
+  "streamlit>=1.31",
+  "pandas>=2.0",
+  "numpy>=1.23",
+  "plotly>=5.15",
+  "geopandas>=0.13",
+  "pyogrio>=0.7",
+  "folium>=0.14",
+  "streamlit-folium>=0.22",
+  "branca>=0.6",
+]
+
+[project.urls]
+Homepage = "https://example.com/"
+
+[tool.uv]
+# This repo is an app, not a package to build/install
+package = false
+# Optional dev-only tools; safe to remove if you prefer no dev deps
+dev-dependencies = [
+  "ruff>=0.5.0",
+  "black>=24.4.0",
+]

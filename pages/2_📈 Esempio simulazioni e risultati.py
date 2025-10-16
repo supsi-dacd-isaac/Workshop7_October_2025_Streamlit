@@ -319,7 +319,7 @@ df = data2('/plots_data/Share buildings PV.csv')
 @st.cache_data
 def upload_district_geometries(file_name):
 
-    gdf_district = gpd.read_file(results_path + file_name, columns=['NAME', 'KANTONSNUM', 'geometry'])
+    gdf_district = gpd.read_file(results_path + file_name, columns=['NAME', 'KANTONSNUM', 'geometry'], engine='pyogrio')
     if gdf_district.crs != "EPSG:4326":
         gdf_district = gdf_district.to_crs(epsg=4326)
     gdf_district = gdf_district.loc[gdf_district['KANTONSNUM'] == 21]
@@ -518,7 +518,7 @@ st.markdown(
 )
 
 
-st.image(results_path + "/images/Image.PNG", caption="")
+st.image(results_path + "/images/Image.png", caption="")
 
 st.markdown("### Seleziona i risultati da visualizzare")
 selections = st.multiselect(
@@ -531,7 +531,6 @@ selections = st.multiselect(
     ]
 )
 
-st.set_page_config(layout="wide")
 
 
 if "Diffusione energia fotovoltaica" in selections:
