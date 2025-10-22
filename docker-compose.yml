@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  streamlit-app:
+    build: .
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount data directories for development (optional - remove for production)
+      - ./plots_data:/app/plots_data:ro
+      - ./images:/app/images:ro
+      - ./Limits:/app/Limits:ro
+      - ./ch.bfe.elektrizitaetsproduktionsanlagen.gpkg:/app/ch.bfe.elektrizitaetsproduktionsanlagen.gpkg:ro
+      - ./map.html:/app/map.html:ro
+    environment:
+      - PYTHONPATH=/app
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ADDRESS=0.0.0.0
+    restart: unless-stopped
+    container_name: workshop7-streamlit-app
