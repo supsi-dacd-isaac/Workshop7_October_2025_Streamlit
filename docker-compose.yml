@@ -1,6 +1,11 @@
 services:
   streamlit-app:
-    build: .
+    build:
+      context: .
+      args:
+        http_proxy:  ${HTTP_PROXY}
+        https_proxy: ${HTTPS_PROXY}
+        no_proxy:    ${NO_PROXY}
     ports:
       - "8501:8501"
     volumes:
@@ -11,6 +16,9 @@ services:
       - ./ch.bfe.elektrizitaetsproduktionsanlagen.gpkg:/app/ch.bfe.elektrizitaetsproduktionsanlagen.gpkg:ro
       - ./map.html:/app/map.html:ro
     environment:
+      - HTTP_PROXY=${HTTP_PROXY}
+      - HTTPS_PROXY=${HTTPS_PROXY}
+      - NO_PROXY=${NO_PROXY}
       - PYTHONPATH=/app
       - STREAMLIT_SERVER_PORT=8501
       - STREAMLIT_SERVER_ADDRESS=0.0.0.0
