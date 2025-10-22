@@ -299,7 +299,7 @@ res_types = ['SFH', 'DFH', 'MFH']
 @st.cache_data
 def data1(file_name):
     df = pd.read_csv(results_path + file_name, sep=';', on_bad_lines='skip')
-    df = df.round(2)
+    df = df.round(3)
     return df
 
 df = data1('/plots_data/Power installed.csv')
@@ -375,14 +375,14 @@ def data3(file_name):
     return df
 
 df = data3('/plots_data/Battery installed capacity.csv')
-[fig3, fig4] = plot_1(df, "Capacità installata in edifici residenziali", "Capacità installata in edifici non residenziali", "Tipo di edificio residenziale", "Taglia dell'impianto", 0, 300, 60, 'Capacità installata [MWh]')
-fig21 = plot_comparison(df, "Potenza installata nel 2050", 300, 'Capacità installata [MWh]')
+[fig3, fig4] = plot_1(df, "Capacità installata in edifici residenziali", "Capacità installata in edifici non residenziali", "Tipo di edificio residenziale", "Taglia dell'impianto PV", 0, 300, 60, 'Capacità installata [MWh]')
+fig21 = plot_comparison(df, "Capacità installata nel 2050", 300, 'Capacità installata [MWh]')
 
 
 @st.cache_data
 def data4(file_name):
     df = pd.read_csv(results_path + file_name, sep=';', on_bad_lines='skip')
-    df = df.round(2)
+    df = df.round(3)
     return df
 
 df = data4('/plots_data/Share buildings battery.csv')
@@ -431,7 +431,7 @@ folium.GeoJson(
 @st.cache_data
 def data5(file_name):
     df = pd.read_csv(results_path + file_name, sep=';', on_bad_lines='skip')
-    df = df.round(2)
+    df = df.round(3)
     return df
 
 df = data5('/plots_data/Electricity produced and consumed.csv')
@@ -441,7 +441,7 @@ fig5 = plot_3(df, "Evoluzione della domanda, produzione e <br>autoconsumo PV (Ti
 @st.cache_data
 def data6(file_name):
     df = pd.read_csv(results_path + file_name, sep=';', on_bad_lines='skip')
-    df = df.round(2)
+    df = df.round(3)
     return df
 
 df = data6('/plots_data/Electricity produced and consumed District.csv')
